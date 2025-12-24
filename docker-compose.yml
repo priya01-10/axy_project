@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: axy
+      POSTGRES_PASSWORD: axy123
+      POSTGRES_DB: axydb
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
