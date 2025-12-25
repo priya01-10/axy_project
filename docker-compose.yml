@@ -16,7 +16,7 @@ services:
       - backend
 
   db:
-    image: postgres:15
+    image: postgres:13
     environment:
       POSTGRES_USER: axy
       POSTGRES_PASSWORD: axy123
